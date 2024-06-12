@@ -2,3 +2,16 @@ body {
     background-color: #394644;
     color: #fff;
 }
+
+#add-btn {
+    background-color: rgba(54, 188, 168, 0.8);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    border-radius: 18px;
+}
+
+#add-btn:active {
+    background-color: rgba(54, 188, 168, 0.4);;
+}
