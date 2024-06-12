@@ -94,6 +94,7 @@ function list() {
     setTitle(modal, books, i);
     setAuthor(modal, books, i);
     setPages(modal, books, i);
+    changeRead(modal, books, i);
     setDelete(modal, books, i);
     // console.log("asdfa");
     // console.log(books);
@@ -125,6 +126,39 @@ function setPages(modal, books, i) {
   let span = document.createElement("span");
   span.textContent = "Pages";
   heading4.appendChild(span);
+}
+
+function changeRead(modal, books, i) {
+  let heading5 = document.createElement("h5");
+  let label = document.createElement("label");
+  label.setAttribute("for", "read");
+  label.textContent = "Read";
+  heading5.appendChild(label);
+
+  let input = document.createElement("input");
+  input.setAttribute("type", "checkbox");
+  input.setAttribute("name", "page");
+
+  if (books[i].read == true) {
+    input.setAttribute("checked", "");
+    heading5.appendChild(input);
+  } else {
+    heading5.appendChild(input);
+    modal.style.backgroundColor = 'red'
+  }
+
+  modal.appendChild(heading5);
+
+  input.addEventListener("change", (e) => {
+    if(e.currentTarget.checked) {
+        books[i].read = true
+    } else {
+        books[i].read = false;
+    }
+    list();
+  });
+
+
 }
 
 function setDelete(modal, books, i) {
