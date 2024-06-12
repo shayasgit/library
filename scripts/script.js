@@ -13,67 +13,130 @@ closeBtn.addEventListener("click", () => {
   formBox.close();
 });
 
-
 // Book Object Constructor
 function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
 // Create Book Object
 function getTitle() {
-    let inputTitle = document.querySelector('#title');
-    let inputValue = inputTitle.value;
-    inputTitle.value = '';
-    return inputValue;
+  let inputTitle = document.querySelector("#title");
+  let inputValue = inputTitle.value;
+  inputTitle.value = "";
+  return inputValue;
 }
 
 function getAuthor() {
-    let inputAuthor = document.querySelector('#author');
-    let inputValue = inputAuthor.value;
-    inputAuthor.value = '';
-    return inputValue;
+  let inputAuthor = document.querySelector("#author");
+  let inputValue = inputAuthor.value;
+  inputAuthor.value = "";
+  return inputValue;
 }
 
 function getNoOfPages() {
-    let inputPages = document.querySelector('#pages');
-    let inputValue = inputPages.value;
-    inputPages.value = '';
-    return inputValue;
+  let inputPages = document.querySelector("#pages");
+  let inputValue = parseInt(inputPages.value);
+  inputPages.value = "";
+  return inputValue;
 }
 
 function getRead() {
-    let inputRead = document.querySelector('input[name="read"]:checked');
-    let inputValue = inputRead.value
-    inputValue.value = ''
-    if(inputValue == 'false') {
-        inputValue = false
-    } else if (inputValue == 'true') {
-        inputValue = true
-    }
-    return inputValue
+  let inputRead = document.querySelector('input[name="read"]:checked');
+  let inputValue = inputRead.value;
+  inputValue.value = "";
+  if (inputValue == "false") {
+    inputValue = false;
+  } else if (inputValue == "true") {
+    inputValue = true;
+  }
+  return inputValue;
 }
 
-let addBtn = document.querySelector('.add');
-addBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+let addBtn = document.querySelector(".add");
+addBtn.addEventListener("click", (e) => {
+  let title = getTitle();
+  let author = getAuthor();
+  let pages = getNoOfPages();
+  let read = getRead();
 
-    let title = getTitle();
-    let author = getAuthor();
-    let pages = getNoOfPages();
-    let read = getRead();
-
-    let newBook = new Book(title, author, pages, read)
-    getListOfBooks(newBook);
-    formBox.close()
-})
+  let newBook = new Book(title, author, pages, read);
+  getListOfBooks(newBook);
+  e.preventDefault();
+  list();
+  formBox.close();
+});
 
 // Books Array
 let books = [];
 
+// Object.Book <- Books[] = Prototype
+Object.setPrototypeOf(Book, books);
+
+// Push book to array
 function getListOfBooks(book) {
-    books.push(book)
-    console.log(books)
+  books.push(book);
+  //   console.log(books);
 }
+
+let modals = document.querySelector(".modals");
+function list() {
+  while (modals.hasChildNodes()) {
+    modals.removeChild(modals.firstChild);
+  }
+  for (let i = 0; i < books.length; i++) {
+    let modal = document.createElement("div");
+    modal.classList.add("modal");
+    modals.appendChild(modal);
+
+    setTitle(modal, books, i);
+    setAuthor(modal, books, i);
+    setPages(modal, books, i);
+    setDelete(modal, books, i);
+    // console.log("asdfa");
+    // console.log(books);
+  }
+}
+
+function setTitle(modal, books, i) {
+  let title = document.createElement("h2");
+  title.textContent = books[i].title;
+  modal.appendChild(title);
+}
+
+function setAuthor(modal, books, i) {
+  let heading3 = document.createElement("h3");
+  heading3.textContent = "by ";
+
+  let author = document.createElement("span");
+  author.textContent = books[i].author;
+  heading3.appendChild(author);
+
+  modal.appendChild(heading3);
+}
+
+function setPages(modal, books, i) {
+  let heading4 = document.createElement("h4");
+  heading4.textContent = books[i].pages + " ";
+  modal.appendChild(heading4);
+
+  let span = document.createElement("span");
+  span.textContent = "Pages";
+  heading4.appendChild(span);
+}
+
+function setDelete(modal, books, i) {
+  let btn = document.createElement("button");
+  btn.textContent = "Delete";
+  btn.classList.add("delete-btn");
+  modal.appendChild(btn);
+
+  btn.addEventListener("click", () => {
+    books.splice(books.indexOf(books[i]), 1);
+    list();
+  });
+}
+
+// console.log(books);
