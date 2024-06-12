@@ -5,3 +5,8 @@ let addBtn = document.querySelector('#add-btn');
 addBtn.addEventListener('click', () => {
     formBox.showModal();
 });
+
+let closeBtn = document.querySelector('.close');
+closeBtn.addEventListener('click', () => {
+    formBox.close();
+})

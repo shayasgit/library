@@ -11,7 +11,7 @@
     <h1>Library</h1>
 
     <dialog id="form-box">
-        <form action="#">
+        <form action="#" class="form">
             <div class="input-div">
                 <label for="title">Title <span aria-label="required">*</span></label>
                 <input type="text" name="title" id="title" required>
@@ -24,7 +24,7 @@
                 <label for="pages">No of Pages <span aria-label="required">*</span></label>
                 <input type="number" name="pages" id="pages">
             </div>
-            <div class="input-div">
+            <div class="input-div" id="radio">
                 <fieldset>
                     <legend>READ</legend>
                     <input type="radio" name="read" id="not-yet" required>
@@ -33,7 +33,10 @@
                     <label for="yes">Yes</label>
                 </fieldset>
             </div>
-            <button>ADD</button>
+            <div class="btn-flex">
+                <button class="close">CANCEL</button>
+                <button class="add">ADD</button>
+            </div>
         </form>
     </dialog>
 

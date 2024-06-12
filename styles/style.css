@@ -1,6 +1,7 @@
 body {
     background-color: #394644;
     color: #fff;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #add-btn {
@@ -8,10 +9,71 @@ body {
     color: #fff;
     font-weight: bold;
     font-size: 1.2rem;
-    padding: 8px 12px;
+    padding: 8px 16px;
     border-radius: 18px;
 }
 
 #add-btn:active {
     background-color: rgba(54, 188, 168, 0.4);;
+}
+
+#form-box {
+    border-radius: 18px;
+    box-shadow: 2px 5px 30px 0px rgba(0,0,0,0.75);
+    padding: 35px;
+    background-color: rgba(54, 188, 168, 0.4);;
+    color: #fff;
+}
+
+#form-box {
+    margin-top: 120px;
+}
+
+form div + div {
+    margin-top: 12px;
+}
+
+form input {
+    background-color: #394644;
+    color: #fff;
+    padding: 3px;
+}
+
+form button {
+    margin-top: 12px;
+}
+
+form {
+    text-align: right;
+}
+form #radio {
+    text-align: left;
+}
+
+.btn-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#form-box button.add, #form-box button.close {
+    background-color: #394644;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 8px 24px;
+    border-radius: 18px;
+}
+
+#form-box button.close {
+    background-color: rgb(181, 38, 38);
+}
+
+#form-box button.add:active {
+    background-color: rgba(54, 188, 168, 0.4);
+    color: #000;
+}
+
+#form-box button.close:active {
+    background-color: rgba(181, 38, 38, 0.8);
+    color: #000;
 }
