@@ -14,14 +14,14 @@ body {
 }
 
 #add-btn:active {
-    background-color: rgba(54, 188, 168, 0.4);;
+    background-color: rgba(54, 188, 168, 0.4);
 }
 
 #form-box {
     border-radius: 18px;
     box-shadow: 2px 5px 30px 0px rgba(0,0,0,0.75);
     padding: 35px;
-    background-color: rgba(54, 188, 168, 0.4);;
+    background-color: #394644;
     color: #fff;
 }
 
@@ -56,24 +56,57 @@ form #radio {
     align-items: center;
 }
 
-#form-box button.add, #form-box button.close {
-    background-color: #394644;
+#form-box button.add, #form-box button.close, .modal .delete-btn {
+    background-color: rgba(54, 188, 168, 0.8);
     color: #fff;
     font-size: 0.85rem;
     padding: 8px 24px;
     border-radius: 18px;
 }
 
-#form-box button.close {
+#form-box button.close, .modal .delete-btn {
     background-color: rgb(181, 38, 38);
 }
 
 #form-box button.add:active {
     background-color: rgba(54, 188, 168, 0.4);
-    color: #000;
+    color: #394644;
 }
 
-#form-box button.close:active {
+#form-box button.close:active, .modal .delete-btn:active {
     background-color: rgba(181, 38, 38, 0.8);
-    color: #000;
+}
+
+/* Modal */
+.modals {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.modal h5, .modal h2, .modal h3, .modal h4 {
+    margin: 5px;
+}
+.modal {
+    box-sizing: border-box;
+    border-radius: 18px;
+    box-shadow: 2px 5px 30px 0px rgba(0,0,0,0.75);
+    padding: 35px;
+    background-color: rgba(54, 188, 168, 0.4);
+    color: #fff;
+    min-width: 23%;
+    margin: 0px 1%;
+    margin-bottom: 2%;
+    text-align:  center;
+}
+
+.modal h3 span, .modal h4 span{
+    font-style: italic;
+}
+
+.modal h5 input {
+    vertical-align: middle;
 }
